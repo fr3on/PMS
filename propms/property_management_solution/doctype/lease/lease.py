@@ -83,6 +83,7 @@ def make_lease_invoice_schedule(leasedoc):
 					# frappe.msgprint("This lease item will be removed from invoice schedule " + str(lease_invoice_schedule.lease_item))
 					frappe.delete_doc("Lease Invoice Schedule", lease_invoice_schedule.name)
 			item_invoice_frequency = {
+				"None": 999.00,
 				"Monthly": 1.00, # .00 to make it float type
 				"Bi-Monthly": 2.00,
 				"Quarterly": 3.00,
@@ -104,7 +105,7 @@ def make_lease_invoice_schedule(leasedoc):
 					message = "Invalid frequency: " + str(item.frequency) + " for " + str(leasedoc) + " not found. Contact the developers!"
 					frappe.log_error("Frequency incorrect", message)
 					break
-				invoice_qty = float(frequency_factor)
+				invoice_qty = 1
 				end_date = lease.end_date
 				invoice_date = lease.start_date
 				# Find out the first invoice date on or after 2020-01-01 to process.
@@ -128,7 +129,7 @@ def make_lease_invoice_schedule(leasedoc):
 						# frappe.msgprint("Making Fresh Invoice Schedule for " + str(invoice_date)
 						# 	+ ", Quantity calculated: " + str(invoice_qty))
 						makeInvoiceSchedule(invoice_date, item.lease_item, item.paid_by, item.lease_item, lease.name,
-							invoice_qty, item.amount, idx, item.currency_code, item.witholding_tax, lease.days_to_invoice_in_advance, item.invoice_item_group
+							1, item.amount, idx, item.currency_code, item.witholding_tax, lease.days_to_invoice_in_advance, item.invoice_item_group
 						)
 						idx += 1
 						invoice_date = add_days(invoice_period_end, 1)
@@ -147,7 +148,7 @@ def make_lease_invoice_schedule(leasedoc):
 							#frappe.msgprint("Invoice quantity corrected as " + str(invoice_qty))
 						# frappe.msgprint("Making Pre Invoice Schedule for " + str(invoice_date) + ", Quantity calculated: " + str(invoice_qty))
 						makeInvoiceSchedule(invoice_date, item.lease_item, item.paid_by, item.lease_item, lease.name,
-							invoice_qty, item.amount, idx, item.currency_code, item.witholding_tax, lease.days_to_invoice_in_advance, item.invoice_item_group
+							1, item.amount, idx, item.currency_code, item.witholding_tax, lease.days_to_invoice_in_advance, item.invoice_item_group
 						)
 						idx += 1
 						invoice_date = add_days(invoice_period_end, 1)
@@ -184,7 +185,7 @@ def make_lease_invoice_schedule(leasedoc):
 						#frappe.msgprint("Invoice quantity corrected as " + str(invoice_qty))
 					# frappe.msgprint("Making Post Invoice Schedule for " + str(invoice_date) + ", Quantity calculated: " + str(invoice_qty))
 					makeInvoiceSchedule(invoice_date, item.lease_item, item.paid_by, item.lease_item, lease.name,
-						invoice_qty, item.amount, idx, item.currency_code, item.witholding_tax, lease.days_to_invoice_in_advance, item.invoice_item_group
+						1, item.amount, idx, item.currency_code, item.witholding_tax, lease.days_to_invoice_in_advance, item.invoice_item_group
 					)
 					idx += 1
 					invoice_date = add_days(invoice_period_end, 1)
@@ -194,4 +195,3 @@ def make_lease_invoice_schedule(leasedoc):
 	except Exception as e:
 		frappe.msgprint("Exception error! Check app error log.")
 		app_error_log(frappe.session.user,str(e))
-
