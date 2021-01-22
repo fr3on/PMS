@@ -74,7 +74,7 @@ def leaseInvoiceAutoCreate():
 	"""Prepare data to create sales invoice from lease invoice schedule. This is called from form button as well as daily schedule"""
 	try:
 		# frappe.msgprint("Started")
-		lease_invoice = frappe.get_all("Lease Invoice Schedule", filters = {"date_to_invoice": ['between', ("2020-01-01", today())], "invoice_number": ""}, fields = ["name", "date_to_invoice", "invoice_number", "parent", "parent", "invoice_item_group", "lease_item", "paid_by", "currency"], order_by = "parent, paid_by, invoice_item_group, date_to_invoice, currency, lease_item")
+		lease_invoice = frappe.get_all("Lease Invoice Schedule", filters = {"invoice_number": ""}, fields = ["name", "date_to_invoice", "invoice_number", "parent", "parent", "invoice_item_group", "lease_item", "paid_by", "currency"], order_by = "parent, paid_by, invoice_item_group, date_to_invoice, currency, lease_item")
 		#frappe.msgprint("Lease being generated for " + str(lease_invoice))
 		row_num = 1 # to identify the 1st line of the list
 		prev_parent = ""
