@@ -63,6 +63,12 @@
    "fieldtype": "Link",
    "label": "Parent property",
    "options": "Property"
+  },  
+  {
+   "fieldname": "property_project",
+   "fieldtype": "Link",
+   "label": "Project",
+   "options": "Projects"
   },
   {
    "fieldname": "column_break_2",
