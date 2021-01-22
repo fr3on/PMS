@@ -26,9 +26,6 @@ frappe.ui.form.on('Lease', {
 		cur_frm.add_custom_button(__("Generate Pending Invoice"), function() {
 			generate_pending_invoice();
 		});
-		cur_frm.add_custom_button(__("Make Invoice Schedule for all Lease"), function() {
-			getAllLease(cur_frm);
-		});
 	},
 	onload: function(frm) {
 			frappe.realtime.on("lease_invoice_schedule_progress", function(data) {
