@@ -75,7 +75,7 @@ def leaseInvoiceAutoCreate():
 	try:
 		# frappe.msgprint("Started")
 		lease_invoice = frappe.get_all("Lease Invoice Schedule", filters = {"invoice_number": ""}, fields = ["name", "date_to_invoice", "invoice_number", "parent", "parent", "invoice_item_group", "lease_item", "paid_by", "currency"], order_by = "parent, paid_by, invoice_item_group, date_to_invoice, currency, lease_item")
-		#frappe.msgprint("Lease being generated for " + str(lease_invoice))
+		frappe.msgprint("Lease being generated for " + str(lease_invoice))
 		row_num = 1 # to identify the 1st line of the list
 		prev_parent = ""
 		prev_customer = ""
