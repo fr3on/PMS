@@ -173,7 +173,7 @@
    "fieldtype": "Select",
    "hidden": 1,
    "label": "Frequency",
-   "options": "Monthly\nBi-Monthly\nQuarterly\nAnnually\n6 months"
+   "options": "None\nMonthly\nBi-Monthly\nQuarterly\nAnnually\n6 months"
   },
   {
    "fieldname": "lease_item_table_section",
