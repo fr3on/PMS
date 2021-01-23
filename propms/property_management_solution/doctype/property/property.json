@@ -68,7 +68,7 @@
    "fieldname": "property_project",
    "fieldtype": "Link",
    "label": "Project",
-   "options": "Projects"
+   "options": "Project"
   },
   {
    "fieldname": "column_break_2",
