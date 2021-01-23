@@ -31,7 +31,7 @@
    "fieldtype": "Select",
    "in_list_view": 1,
    "label": "Frequency",
-   "options": "Monthly\nBi-Monthly\nQuarterly\nAnnually\n6 months"
+   "options": "None\nMonthly\nBi-Monthly\nQuarterly\nAnnually\n6 months"
   },
   {
    "columns": 1,
