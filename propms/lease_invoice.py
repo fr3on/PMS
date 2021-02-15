@@ -16,7 +16,7 @@ def app_error_log(title,error):
 			"error":traceback.format_exc()
 		})
 	d = d.insert(ignore_permissions=True)
-	return d	
+	return d
 
 @frappe.whitelist()
 def makeInvoice(date,customer,items,currency=None,lease=None,lease_item=None,qty=None,schedule_start_date=None):
@@ -36,7 +36,7 @@ def makeInvoice(date,customer,items,currency=None,lease=None,lease_item=None,qty
 			posting_date=today(),
 			items=json.loads(items),
 			customer=str(customer),
-			due_date=getDueDate(today(),str(customer)),
+			due_date=subs_end_date,
 			currency=currency,
 			lease=lease,
 			lease_item=lease_item,
@@ -128,7 +128,7 @@ def leaseInvoiceAutoCreate():
 			item_dict.append(dict(item_json))
 			lease_invoice_schedule_list.append(invoice_item.name)
 
-			# Remember the values for the next round 
+			# Remember the values for the next round
 			prev_parent = invoice_item.parent
 			prev_customer = invoice_item.paid_by
 			prev_invoice_item_group = invoice_item.invoice_item_group
