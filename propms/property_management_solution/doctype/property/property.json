@@ -58,18 +58,14 @@
    "unique": 1
   },
   {
-   "default": "Viva Tower",
    "fieldname": "parent_property",
    "fieldtype": "Link",
    "label": "Parent property",
-   "options": "Property"
+   "options": "Property",
+   "in_list_view": 1,
+   "in_standard_filter": 1,
+   "in_global_search": 1
   },  
-  {
-   "fieldname": "property_project",
-   "fieldtype": "Link",
-   "label": "Project",
-   "options": "Project"
-  },
   {
    "fieldname": "column_break_2",
    "fieldtype": "Column Break"
