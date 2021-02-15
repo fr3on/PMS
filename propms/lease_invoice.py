@@ -36,7 +36,7 @@ def makeInvoice(date,customer,items,currency=None,lease=None,lease_item=None,qty
 			posting_date=today(),
 			items=json.loads(items),
 			customer=str(customer),
-			due_date=schedule_start_date,
+			due_date=getDueDate(schedule_start_date,str(customer)),
 			currency=currency,
 			lease=lease,
 			lease_item=lease_item,
