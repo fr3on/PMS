@@ -67,7 +67,7 @@ def make_lease_invoice_schedule(leasedoc):
 		if len(lease.lease_item) >= 1 and lease.end_date >= getdate(today()):
 			# Clean up records that are no longer required, i.e. of unnecessary lease items and unnecessary dates
 			# Records before 1st Jan 2020
-			lease_invoice_schedule_list = frappe.get_list("Lease Invoice Schedule", fields=["name", "parent", "invoice_number", "date_to_invoice"], filters={"parent": lease.name, "date_to_invoice": ("<", getdate("1990-01-01"))})
+			lease_invoice_schedule_list = frappe.get_list("Lease Invoice Schedule", fields=["name", "parent", "invoice_number", "date_to_invoice"], filters={"parent": lease.name, "date_to_invoice": ("<", getdate("2021-01-01"))})
 			# frappe.msgprint("Records before 1st Jan 2020 " + str(lease_invoice_schedule_list))
 			for lease_invoice_schedule in lease_invoice_schedule_list:
 				# frappe.msgprint("Deleting Record before 1st Jan 2020 " + str(lease_invoice_schedule.name))
@@ -109,7 +109,7 @@ def make_lease_invoice_schedule(leasedoc):
 				end_date = lease.end_date
 				invoice_date = lease.start_date
 				# Find out the first invoice date on or after 2010-01-01 to process.
-				while end_date >= invoice_date and invoice_date < getdate('1990-01-01'):
+				while end_date >= invoice_date and invoice_date < getdate('2010-01-01'):
 					invoice_period_end = add_days(add_months(invoice_date, frequency_factor), -1)
 					# Set invoice_Qty as appropriate fraction of frequency_factor
 					if invoice_period_end > end_date:
