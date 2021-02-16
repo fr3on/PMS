@@ -30,6 +30,7 @@ def makeInvoice(date,customer,items,currency=None,lease=None,lease_item=None,qty
 		else:
 			#month qty is not fractional
 			subs_end_date = add_days(add_months(schedule_start_date,qty), -1)
+			frappe.msgprint("dd: " + getDueDate(schedule_start_date,str(customer)))
 		sales_invoice=frappe.get_doc(dict(
 			doctype='Sales Invoice',
 			company = company,
