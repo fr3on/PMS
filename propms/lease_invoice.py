@@ -42,6 +42,7 @@ def makeInvoice(date,customer,items,currency=None,lease=None,lease_item=None,qty
 			lease_item=lease_item,
 			taxes_and_charges=default_tax_template,
 			from_date=schedule_start_date,
+			other_payment_due_date=schedule_start_date,
 			to_date=subs_end_date,
 			cost_center=getCostCenter(lease)
 		)).insert()
